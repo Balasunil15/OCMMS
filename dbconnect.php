@@ -3,7 +3,7 @@
 $servername="localhost";
 $username = "root";
 $password = "";
-$mydb ="mat_que"; 
+$mydb ="course_management"; 
 
 $conn = mysqli_connect($servername,$username,$password,$mydb);
 if(!$conn){
