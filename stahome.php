@@ -1,6 +1,11 @@
 <?php
 include("dbconnect.php");
 session_start();
+// Only allow access if staff is logged in
+if (!isset($_SESSION['sid'])) {
+    header("Location: staff.php");
+    exit();
+}
 
 echo $sid = $_SESSION['sid'];  // Assuming the session holds the staff_id
 
@@ -42,7 +47,7 @@ if ($cyear) {
                     <i class="fas fa-home"></i> HOME
                 </a>
                
-                <a href="index.php" class="nav-link"> LOGOUT
+                <a href="logout.php" class="nav-link"> LOGOUT
                 </a>
             </div>
         </div>

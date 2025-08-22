@@ -30,6 +30,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     echo "Data successfully inserted!";
+    // Only allow access if admin is logged in
+    if (!isset($_SESSION['admin_id'])) {
+        header("Location: index.php");
+        exit();
+    }
     exit;
 }
 
@@ -201,7 +206,7 @@ if (isset($_GET['department'])) {
                 <a href="vstaff.php" class="nav-link">
                     STAFF
                 </a>
-                <a href="index.php" class="nav-link">
+                <a href="logout.php" class="nav-link">
                     LOGOUT
                 </a>
             </div>

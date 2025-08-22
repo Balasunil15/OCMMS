@@ -1,6 +1,11 @@
 <?php
 include("dbconnect.php");
 session_start();
+// Only allow access if admin is logged in
+if (!isset($_SESSION['admin_id'])) {
+    header("Location: index.php");
+    exit();
+}
 
 // Get the staff ID from the URL
 if (isset($_GET['id'])) {
@@ -84,7 +89,7 @@ if (isset($_POST['update'])) {
                 </a>
 				
 				
-				<a href="index.php" class="nav-link">
+                <a href="logout.php" class="nav-link">
                     LOGOUT
                 </a>
 				

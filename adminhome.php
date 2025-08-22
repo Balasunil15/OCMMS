@@ -3,6 +3,11 @@
  	include("dbconnect.php");
 	extract($_POST);
 	session_start();
+// Only allow access if admin is logged in
+if (!isset($_SESSION['admin_id'])) {
+    header("Location: index.php");
+    exit();
+}
 
 if(isset($_POST['btn']))
 {
@@ -72,7 +77,7 @@ $qry=mysqli_query($conn,"insert into register values('','$name','$dob','$email',
                 </a>
 				
 				
-				<a href="index.php" class="nav-link">
+                <a href="logout.php" class="nav-link">
                     LOGOUT
                 </a>
 				

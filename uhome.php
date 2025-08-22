@@ -4,6 +4,11 @@ session_start();
 
 echo $stuid=$_SESSION['rollno'];// Assuming the session holds the staff_id
 $qry1=mysqli_query($conn,"select * from register where rollno='$stuid'");
+// Only allow access if student is logged in
+if (!isset($_SESSION['rollno'])) {
+    header("Location: student.php");
+    exit();
+}
 $row=mysqli_fetch_assoc($qry1);
    
    echo  $dep=$row['dep'];
@@ -65,7 +70,7 @@ if ($cyear) {
                     <i class="fas fa-home"></i> HOME
                 </a>
                
-                <a href="index.php" class="nav-link"> LOGOUT
+                <a href="logout.php" class="nav-link"> LOGOUT
                 </a>
             </div>
         </div>

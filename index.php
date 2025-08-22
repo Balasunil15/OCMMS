@@ -14,6 +14,7 @@ if($num==1)
 </script>
 <?php
 
+$_SESSION['admin_id'] = $uname;
 header("location:adminhome.php");
 }
 else

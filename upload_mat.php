@@ -1,6 +1,11 @@
 <?php
 include("dbconnect.php");
 session_start();
+// Only allow access if staff is logged in
+if (!isset($_SESSION['sid'])) {
+    header("Location: staff.php");
+    exit();
+}
 
 // Check if the user is logged in
 
@@ -73,7 +78,7 @@ $img=$file_name;
                     <i class="fas fa-home"></i> Home
                 </a>
                
-                <a href="index.php" class="nav-link"> Logout
+                <a href="logout.php" class="nav-link"> Logout
                 </a>
             </div>
         </div>

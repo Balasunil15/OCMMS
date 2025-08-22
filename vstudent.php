@@ -1,6 +1,11 @@
 <?php
 include("dbconnect.php");
 session_start();
+// Only allow access if admin is logged in
+if (!isset($_SESSION['admin_id'])) {
+    header("Location: index.php");
+    exit();
+}
 
 if (isset($_POST['btn'])) {
     // Handle form submission if needed
@@ -77,7 +82,7 @@ if (isset($_POST['btn'])) {
                 </a>
 				
 				
-				<a href="index.php" class="nav-link">
+                <a href="logout.php" class="nav-link">
                     LOGOUT
                 </a>
 				

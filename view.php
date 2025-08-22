@@ -1,6 +1,11 @@
 <?php
 include("dbconnect.php");
 session_start();
+// Only allow access if logged in as admin, staff, or student
+if (!isset($_SESSION['admin_id']) && !isset($_SESSION['sid']) && !isset($_SESSION['rollno'])) {
+    header("Location: index.php");
+    exit();
+}
 
 $rollno = $_SESSION['rollno'];
 
@@ -74,7 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['need'])) {
                 </a>
                 <a href="givef.php" class="nav-link">FEEDBACK
                 </a>
-                <a href="index.php" class="nav-link"> LOGOUT
+                <a href="logout.php" class="nav-link"> LOGOUT
                 </a>
             </div>
         </div>
